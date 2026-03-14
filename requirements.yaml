@@ -1,0 +1,6 @@
+packages: {}
+images: []
+notes:
+  - "Pure frontend-only site as requested."
+  - "No external images used; relying on CSS gradients and custom SVG patterns for the carbon fiber textures."
+  - "All data is hardcoded for the presentation."
