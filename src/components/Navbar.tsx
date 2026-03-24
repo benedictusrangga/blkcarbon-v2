@@ -4,10 +4,11 @@ import { useLocation } from 'wouter';
 import { PRODUCTS } from '@/data/products';
 
 const CATEGORIES = [
-  { name: 'Padel Rackets', img: '/images/product-carbonspectra.png', slug: '/category/padel-rackets' },
-  { name: 'Bags',          img: '/images/category-bags.png',          slug: '/category/bags' },
-  { name: 'Apparel',       img: '/images/category-apparel.png',       slug: '/category/apparel' },
-  { name: 'Accessories',   img: '/images/category-accessories.png',   slug: '/category/accessories' },
+  { name: 'Padel Rackets', img: '/images/padelracket/rackethero.jpg', slug: '/category/padel-rackets' },
+  { name: 'Bags',          img: '/images/bags/bagss.jpeg',          slug: '/category/bags' },
+  { name: 'Apparel',       img: '/images/apparel/apparel.png',       slug: '/category/apparel' },
+  { name: 'Accessories',   img: '/images/accessories/access.jpeg',   slug: '/category/accessories' },
+  { name: 'Bikes', img: '/images/bikes/sepeda.webp', slug: '/category/bikes' },
 ];
 
 const NAV_LINKS = [
@@ -27,7 +28,9 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const megaMenuRef   = useRef<HTMLDivElement>(null);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [, navigate]  = useLocation();
+
+  // ── CHANGED 1: destructure location alongside navigate ──────────────────
+  const [location, navigate] = useLocation();
 
   useEffect(() => {
     if (forceScrolled) return;
@@ -61,10 +64,16 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // ── Helper: apakah path sekarang termasuk Products ───────────────────────
+  const isProductsActive =
+    megaMenuOpen ||
+    location.startsWith('/category') ||
+    location.startsWith('/products');
+
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;1,700&family=Barlow:wght@300;400;500&display=swap');
+     
 
         .nav-link-desktop {
           position: relative;
@@ -158,6 +167,7 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
           {/* LOGO */}
           <button
             className="flex items-center gap-3 group flex-shrink-0"
+             aria-label="Go to homepage"
             onClick={() => goTo('/')}
           >
             <img
@@ -181,27 +191,32 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
           </button>
 
           {/* DESKTOP CENTER NAV */}
-          <div className="hidden lg:flex items-center gap-12 absolute left-1/2 -translate-x-1/2">
+          <div className="hidden nav:flex items-center gap-12 absolute left-1/2 -translate-x-1/2">
+
+            {/* ── CHANGED 2: Products aktif jika di halaman products/category ── */}
             <button
-              className={`nav-link-desktop ${megaMenuOpen ? 'active-menu' : ''}`}
+              className={`nav-link-desktop ${isProductsActive ? 'active-menu' : ''}`}
               onMouseEnter={openMega}
             >
               Products
             </button>
+
             {NAV_LINKS.map((item) => (
               <button
                 key={item.label}
                 onClick={() => goTo(item.path)}
-                className="nav-link-desktop"
+                // ── CHANGED 2: highlight link yang sesuai route aktif ──────────
+                className={`nav-link-desktop ${location === item.path ? 'active-menu' : ''}`}
               >
                 {item.label}
               </button>
             ))}
           </div>
 
-          {/* MOBILE RIGHT */}
-          <div className="flex md:hidden items-center gap-4">
+          
+          <div className="flex nav:hidden items-center gap-4">
             <button
+              aria-label="Toggle menu"
               className="text-white/50 hover:text-white transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
@@ -230,7 +245,7 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
               <div className="w-56 flex-shrink-0">
                 <p
                   style={{ fontFamily: "'Barlow', sans-serif", fontSize: '9px', letterSpacing: '0.18em' }}
-                  className="text-white/30 uppercase mb-3"
+                  className="text-white/60 uppercase mb-3"
                 >
                   Shop by Category
                 </p>
@@ -246,7 +261,7 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
                       <div className={`w-8 h-8 flex-shrink-0 overflow-hidden bg-zinc-900 transition-opacity duration-200 ${
                         hoveredCategory && hoveredCategory !== cat.slug ? 'opacity-30' : 'opacity-100'
                       }`}>
-                        <img src={cat.img} alt={cat.name} className="w-full h-full object-cover" />
+                        <img src={cat.img} loading="lazy" alt={cat.name} className="w-full h-full object-cover" />
                       </div>
                       <span
                         style={{ fontFamily: "'Barlow', sans-serif", fontSize: '12px', letterSpacing: '0.06em' }}
@@ -283,7 +298,7 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
               <div className="flex-1">
                 <p
                   style={{ fontFamily: "'Barlow', sans-serif", fontSize: '9px', letterSpacing: '0.18em' }}
-                  className="text-white/30 uppercase mb-3"
+                  className="text-white/60 uppercase mb-3"
                 >
                   Featured
                 </p>
@@ -358,7 +373,7 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
 
       {/* ── MOBILE BACKDROP ───────────────────────────────────────────────────── */}
       <div
-        className={`fixed inset-0 bg-black/60 z-[60] transition-opacity duration-300 md:hidden ${
+        className={`fixed inset-0 bg-black/60 z-[60] transition-opacity duration-300 nav:hidden ${
           mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         onClick={closeMenu}
@@ -380,7 +395,8 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
               BLKCARBON
             </span>
           </div>
-          <button onClick={closeMenu} className="text-white/40 hover:text-white transition-colors p-1">
+          <button
+            onClick={closeMenu} className="text-white/40 hover:text-white transition-colors p-1" aria-label="Close menu">
             <X className="w-4 h-4" strokeWidth={1.5} />
           </button>
         </div>
@@ -396,15 +412,25 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
               className="mobile-menu-item w-full flex items-center gap-4 px-5 py-3.5 border-b border-white/[0.05] group"
             >
               <div className="w-12 h-12 flex-shrink-0 overflow-hidden bg-zinc-900">
-                <img src={cat.img} alt={cat.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img src={cat.img} loading="lazy" alt={cat.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
+              {/* ── CHANGED 3: kategori aktif lebih terang di mobile ────────── */}
               <span
                 style={{ fontFamily: "'Barlow', sans-serif", fontSize: '13px', letterSpacing: '0.05em', fontWeight: 500 }}
-                className="text-white/70 group-hover:text-white transition-colors flex-1 text-left uppercase"
+                className={`transition-colors flex-1 text-left uppercase ${
+                  location === cat.slug ? 'text-white' : 'text-white/70 group-hover:text-white'
+                }`}
               >
                 {cat.name}
               </span>
-              <ArrowRight className="w-3.5 h-3.5 text-white/20 group-hover:text-[#a3e635] group-hover:translate-x-0.5 transition-all flex-shrink-0" strokeWidth={1.5} />
+              <ArrowRight
+                className={`w-3.5 h-3.5 transition-all flex-shrink-0 ${
+                  location === cat.slug
+                    ? 'text-[#a3e635]'
+                    : 'text-white/20 group-hover:text-[#a3e635] group-hover:translate-x-0.5'
+                }`}
+                strokeWidth={1.5}
+              />
             </button>
           ))}
 
@@ -417,29 +443,53 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
               onClick={() => goTo(item.path)}
               className="mobile-menu-item w-full flex items-center justify-between px-5 py-3 border-b border-white/[0.05] group"
             >
+              {/* ── CHANGED 3: nav link aktif lebih terang di mobile ─────────── */}
               <span
                 style={{ fontFamily: "'Barlow', sans-serif", fontSize: '13px', letterSpacing: '0.05em', fontWeight: 400 }}
-                className="text-white/40 group-hover:text-white/80 transition-colors uppercase"
+                className={`transition-colors uppercase ${
+                  location === item.path ? 'text-white/90' : 'text-white/40 group-hover:text-white/80'
+                }`}
               >
                 {item.label}
               </span>
-              <ArrowRight className="w-3 h-3 text-white/15 group-hover:text-white/40 group-hover:translate-x-0.5 transition-all" strokeWidth={1.5} />
+              <ArrowRight
+                className={`w-3 h-3 transition-all ${
+                  location === item.path
+                    ? 'text-[#a3e635]'
+                    : 'text-white/15 group-hover:text-white/40 group-hover:translate-x-0.5'
+                }`}
+                strokeWidth={1.5}
+              />
             </button>
           ))}
+
+          {/* View All Products — konsisten dengan desktop mega menu */}
+          <div className="px-5 py-5">
+            <button
+              onClick={() => goTo('/products')}
+              style={{ fontFamily: "'Barlow', sans-serif", fontSize: '10px', letterSpacing: '0.15em' }}
+              className="text-white/60 uppercase hover:text-white transition-colors duration-200 flex items-center gap-2 group"
+            >
+              View All Products
+              <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-200" />
+            </button>
+          </div>
         </div>
 
-        {/* Bottom icons — tanpa account */}
+        {/* Bottom icons */}
         <div className="flex-shrink-0 border-t border-white/[0.07] px-5 py-5 flex items-center gap-5">
           <a
-            href="https://www.instagram.com"
+            href="https://www.instagram.com/blkcarbon.co/"
+              aria-label="Instagram BLKCARBON"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white/30 hover:text-white transition-colors"
+            className="text-white/60 hover:text-white transition-colors"
             onClick={closeMenu}
           >
             <Instagram className="w-4 h-4" strokeWidth={1.5} />
           </a>
-          <button onClick={() => goTo('/contact')} className="text-white/30 hover:text-white transition-colors">
+          <button 
+          onClick={() => goTo('/contact')} className="text-white/60 hover:text-white transition-colors" aria-label="Contact">
             <Mail className="w-4 h-4" strokeWidth={1.5} />
           </button>
         </div>

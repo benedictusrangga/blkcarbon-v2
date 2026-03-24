@@ -2,16 +2,141 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>BLKCARBON - Premium Sports Brand</title>
+
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Discover BLKCARBON premium carbon padel rackets engineered for elite performance, precision control, and unmatched durability on the court.">
+    <meta name="robots" content="index, follow">
+
+  
+    <title>BLKCARBON Padel Rackets - Premium Carbon Performance</title>
+
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="preload" as="style"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap">
+
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap"
+      media="print"
+      onload="this.media='all'">
+
+    <link rel="preload" as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'">
+
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png" />
-<link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+
+    <!-- HERO IMAGE PRELOAD -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/vid.webp"
+      fetchpriority="high"
+    />
+
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #000;
+        color: #fff;
+        font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
+      }
+
+      /* Preloader */
+      #preloader {
+        position: fixed;
+        inset: 0;
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+
+      #preloader img {
+        width: 70px;
+        opacity: 0;
+        transform: scale(0.8);
+        animation: logoFade 1.2s ease forwards;
+      }
+
+      @keyframes logoFade {
+        0% { opacity: 0; transform: scale(0.8); }
+        100% { opacity: 1; transform: scale(1); }
+      }
+
+      .fade-out {
+        opacity: 0;
+        transition: opacity 0.6s ease;
+      }
+    </style>
   </head>
+
   <body>
+
+    <div id="preloader">
+      <img src="/favicon.png" alt="BLKCARBON Logo" />
+    </div>
+
+  
+    <div style="display:none">
+
+      <h1>BLKCARBON Premium Carbon Padel Rackets</h1>
+
+      <h2>High Performance Padel Equipment</h2>
+
+      <p>
+        BLKCARBON is a premium sports brand specializing in high-performance carbon padel rackets engineered for elite athletes. Our rackets are designed to deliver precision, power, and unmatched durability.
+      </p>
+
+      <p>
+        Using advanced carbon fiber technology, each product is optimized for balance, responsiveness, and control. BLKCARBON equipment is built for players who demand excellence on the court.
+      </p>
+
+      <p>
+        Explore our collection of padel rackets, apparel, and accessories designed with innovation and performance in mind. Elevate your game with cutting-edge carbon technology.
+      </p>
+
+      <!-- INTERNAL LINKS -->
+      <a href="/products">Padel Rackets</a>
+      <a href="/technology">Carbon Technology</a>
+      <a href="/category/padel-rackets">Padel Category</a>
+
+      <!-- EXTERNAL LINK -->
+      <a href="https://en.wikipedia.org/wiki/Padel_(sport)">About Padel Sport</a>
+
+    </div>
+
+    <!-- REACT APP -->
     <div id="root"></div>
+
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const preloader = document.getElementById("preloader");
+
+        if (preloader) {
+          preloader.classList.add("fade-out");
+
+          setTimeout(() => {
+            preloader.remove();
+          }, 600);
+        }
+      });
+    </script>
+
+    <!-- MAIN SCRIPT -->
     <script type="module" src="/src/main.tsx"></script>
+
   </body>
 </html>

@@ -6,6 +6,10 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import ProductDetail from "@/pages/ProductDetail";
 import CategoryPage from "@/pages/CategoryPage";
+import Technology from "@/pages/Technology";
+import About from "@/pages/About";
+import Contact from "@/pages/Contact";
+import ProductsPage from "./pages/Productpage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,6 +26,10 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/products/:slug" component={ProductDetail} />
       <Route path="/category/:slug" component={CategoryPage} />
+      <Route path="/technology" component={Technology} />
+      <Route path="/about" component={About} />
+      <Route path="/contact" component={Contact} />
+      <Route path="/products" component={ProductsPage} />
       <Route component={NotFound} />
     </Switch>
   );

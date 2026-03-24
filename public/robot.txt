@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.blkcarbon.co/sitemap.xml
+Host: https://www.blkcarbon.co
