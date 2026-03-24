@@ -349,6 +349,10 @@ export default function ProductDetail() {
           to   { opacity: 1;   transform: scale(1); }
         }
       `}</style>
+
+        <Footer description="Live Beyond Limits. Premium carbon performance equipment." />
+
+      </div>
     </div>
   );
 }
