@@ -217,7 +217,6 @@ export const ACCESSORIES: Product[] = [
     
   },
   {
-    // FIX: removed leading space from name
     slug: 'dry-grip',
     name: 'Dry Performance Grip',
     tagline: 'Maximum grip. Maximum control. BLKCARBON.',
@@ -435,7 +434,6 @@ export function getProductBySlug(slug: string): Product | undefined {
   );
 }
 
-// FIX: helper untuk semua produk sekaligus
 export function getAllProducts(): Product[] {
   return [...PRODUCTS, ...BAGS, ...ACCESSORIES, ...BIKES, ...APPAREL];
 }

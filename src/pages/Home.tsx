@@ -327,7 +327,7 @@ useEffect(() => {
             </p>
           </FadeIn>
           <FadeIn delay={400}>
-            <button onClick={() => goTo('/products/carbonspectra-pro')}
+            <button onClick={() => goTo('/products/carbonspectra')}
               className="mt-8 inline-flex items-center gap-3 border border-white/25 px-7 py-3.5 text-xs uppercase tracking-[0.15em] hover:bg-white hover:text-black transition-all duration-300">
               Shop Now <ArrowRight className="w-3.5 h-3.5" />
             </button>
