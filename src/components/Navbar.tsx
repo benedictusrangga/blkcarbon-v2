@@ -29,7 +29,6 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
   const megaMenuRef   = useRef<HTMLDivElement>(null);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // ── CHANGED 1: destructure location alongside navigate ──────────────────
   const [location, navigate] = useLocation();
 
   useEffect(() => {
@@ -73,8 +72,6 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
   return (
     <>
       <style>{`
-     
-
         .nav-link-desktop {
           position: relative;
           font-size: 12px;
@@ -193,7 +190,6 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
           {/* DESKTOP CENTER NAV */}
           <div className="hidden nav:flex items-center gap-12 absolute left-1/2 -translate-x-1/2">
 
-            {/* ── CHANGED 2: Products aktif jika di halaman products/category ── */}
             <button
               className={`nav-link-desktop ${isProductsActive ? 'active-menu' : ''}`}
               onMouseEnter={openMega}
@@ -205,7 +201,6 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
               <button
                 key={item.label}
                 onClick={() => goTo(item.path)}
-                // ── CHANGED 2: highlight link yang sesuai route aktif ──────────
                 className={`nav-link-desktop ${location === item.path ? 'active-menu' : ''}`}
               >
                 {item.label}
@@ -414,7 +409,6 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
               <div className="w-12 h-12 flex-shrink-0 overflow-hidden bg-zinc-900">
                 <img src={cat.img} loading="lazy" alt={cat.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
-              {/* ── CHANGED 3: kategori aktif lebih terang di mobile ────────── */}
               <span
                 style={{ fontFamily: "'Barlow', sans-serif", fontSize: '13px', letterSpacing: '0.05em', fontWeight: 500 }}
                 className={`transition-colors flex-1 text-left uppercase ${
@@ -443,7 +437,6 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
               onClick={() => goTo(item.path)}
               className="mobile-menu-item w-full flex items-center justify-between px-5 py-3 border-b border-white/[0.05] group"
             >
-              {/* ── CHANGED 3: nav link aktif lebih terang di mobile ─────────── */}
               <span
                 style={{ fontFamily: "'Barlow', sans-serif", fontSize: '13px', letterSpacing: '0.05em', fontWeight: 400 }}
                 className={`transition-colors uppercase ${
@@ -463,7 +456,6 @@ export default function Navbar({ forceScrolled = false }: NavbarProps) {
             </button>
           ))}
 
-          {/* View All Products — konsisten dengan desktop mega menu */}
           <div className="px-5 py-5">
             <button
               onClick={() => goTo('/products')}

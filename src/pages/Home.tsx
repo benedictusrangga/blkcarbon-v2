@@ -1,72 +1,61 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { ArrowRight, Hexagon, Crosshair, Zap } from 'lucide-react';
 import { useLocation } from 'wouter';
 import Navbar from '@/components/Navbar';
 import { FadeIn } from '@/components/FadeIn';
 import Footer from '@/components/Footer';
 import { PRODUCTS } from '@/data/products';
-import { useRef, useEffect, useState } from "react";
+
 export default function Home() {
   const [, navigate] = useLocation();
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [showVideo, setShowVideo] = useState(false);
 
   const goTo = (path: string) => {
     navigate(path);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-const videoRef = useRef<HTMLVideoElement | null>(null);
-const [showVideo, setShowVideo] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => setShowVideo(true), 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
-useEffect(() => {
-  const timer = setTimeout(() => {
-    setShowVideo(true);
-  }, 1000);
-
-  return () => clearTimeout(timer);
-}, []);
-
-useEffect(() => {
-  if (showVideo && videoRef.current) {
-    videoRef.current.playbackRate = 0.8;
-    videoRef.current.play().catch(() => {});
-  }
-}, [showVideo]);
+  useEffect(() => {
+    if (showVideo && videoRef.current) {
+      videoRef.current.playbackRate = 0.8;
+      videoRef.current.play().catch(() => {});
+    }
+  }, [showVideo]);
 
   return (
     <div className="min-h-screen bg-[#080808] text-white overflow-x-hidden">
       <Navbar />
 
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700&display=swap');
-      `}</style>
-
-     <section className="relative min-h-[85svh] md:min-h-[85vh] lg:min-h-[90vh] w-full flex items-end justify-start overflow-hidden">
-  
-
-<img
-  src="/images/vid.webp"
-  alt="BLKCARBON Hero"
-  className="absolute inset-0 w-full h-full object-cover z-0"
-/>
-
-{showVideo && (
-  <video
-    ref={videoRef}
-    src="/images/hero3.mp4"
-    autoPlay
-    muted
-    loop
-    playsInline
-   className="absolute inset-0 w-full h-full object-contain md:object-cover bg-black z-[1] opacity-0 animate-fadeIn"
-  />
-)}
+      <section className="relative min-h-[85svh] md:min-h-[85vh] lg:min-h-[90vh] w-full flex items-end justify-start overflow-hidden">
+        <img
+          src="/images/vid.webp"
+          alt="BLKCARBON Hero"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        />
+        {showVideo && (
+          <video
+            ref={videoRef}
+            src="/images/hero3.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-contain md:object-cover bg-black z-[1] opacity-0 animate-fadeIn"
+          />
+        )}
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/10 z-10" />
         <div className="relative z-20 w-full max-w-7xl mx-auto px-6 pb-20 md:pb-28">
           <FadeIn delay={100} direction="up">
-       <h1 className="text-2xl md:text-4xl lg:text-5xl font-display font-semibold tracking-[0.02em] text-white mb-4 uppercase leading-[0.95]">
-  CarbonSpectra<br />// Pro
-</h1>
+            <h1 className="text-2xl md:text-4xl lg:text-5xl font-display font-semibold tracking-[0.02em] text-white mb-4 uppercase leading-[0.95]">
+              CarbonSpectra<br />// Pro
+            </h1>
           </FadeIn>
           <FadeIn delay={300} direction="up">
             <p className="text-white/70 text-base md:text-lg font-light mb-8 max-w-xs">
@@ -128,7 +117,7 @@ useEffect(() => {
             { img: '/images/padelracket/rackethero.jpg',          name: 'Padel Rackets', slug: '/category/padel-rackets' },
             { img: '/images/apparel/apparel.png',     name: 'Apparel',       slug: '/category/apparel' },
             { img: '/images/accessories/access.jpeg', name: 'Accessories',   slug: '/category/accessories' },
-               { img: '/images/bags/bagss.jpeg',        name: 'Bags',          slug: '/category/bags' },
+            { img: '/images/bags/bagss.jpeg',        name: 'Bags',          slug: '/category/bags' },
             { img: '/images/bikes/sepeda.webp',        name: 'Bikes',         slug: '/category/bikes' },
           ].map((cat, idx) => (
             <div
@@ -196,9 +185,9 @@ useEffect(() => {
                 <p className="text-white/45 text-xs mb-4 leading-relaxed">{product.tagline}</p>
                 <div className="flex items-center justify-between">
                 <span className="ml-auto text-[11px] uppercase tracking-widest text-white/90 flex items-center gap-1.5 group-hover:text-white transition-colors">
-  Explore
-  <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-</span>
+                  Explore
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                </span>
                 </div>
               </button>
             </FadeIn>

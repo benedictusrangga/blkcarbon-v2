@@ -149,8 +149,8 @@ export default function CategoryPage() {
               </h2>
 
           <p className="text-white/40 text-sm max-w-xs leading-relaxed">
-   We are preparing our finest {category.name.toLowerCase()} collection. Stay tuned.
-</p>
+                We are preparing our finest {category.name.toLowerCase()} collection. Stay tuned.
+              </p>
               <div className="w-10 h-[2px] bg-[#a3e635]/50 mx-auto" />
 
               <button

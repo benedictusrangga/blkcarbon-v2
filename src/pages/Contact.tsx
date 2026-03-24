@@ -39,8 +39,6 @@ export default function Contact() {
       <Navbar forceScrolled />
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;1,700&family=Barlow:wght@300;400;500&display=swap');
-
         .form-input {
           width: 100%;
           background: rgba(255,255,255,0.03);

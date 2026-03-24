@@ -52,8 +52,6 @@ export default function ProductsPage() {
       <Navbar forceScrolled />
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700&display=swap');
-
         @keyframes slowZoom {
           from { transform: scale(1.0); }
           to   { transform: scale(1.06); }

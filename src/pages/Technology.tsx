@@ -18,8 +18,6 @@ export default function Technology() {
       <Navbar forceScrolled />
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;1,700&family=Cormorant+Garamond:wght@300;400&display=swap');
-
         @keyframes slideUp {
           from { opacity: 0; transform: translateY(20px); }
           to   { opacity: 1; transform: translateY(0); }

@@ -252,7 +252,6 @@ export default function ProductDetail() {
 
                   {/* SPECS */}
                   <div className="pt-6 border-t border-white/8">
-                    <style>{`@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap');`}</style>
                     <div className="mb-5">
                       <div className="w-6 h-px bg-[#a3e635] mb-4" />
                       <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: '9px', letterSpacing: '0.35em' }}
@@ -323,35 +322,26 @@ export default function ProductDetail() {
                       )}
                     </div>
                   <p className="text-[10px] uppercase tracking-widest text-white/30 mb-1">
-  {categoryLabel}
-</p>
-
-<h4 className="text-sm font-semibold uppercase tracking-wide mb-1 
-group-hover:text-white/70 transition-colors leading-tight">
-  {rel.name}
-</h4>
-
-<div className="flex items-center justify-between">
-  <span className="text-sm font-semibold tracking-tight">
-    {rel.price}
-  </span>
-
-  <span className="text-[10px] uppercase tracking-widest text-white/35 
-  flex items-center gap-1 group-hover:text-[#a3e635]/80 transition-colors">
-    Explore
-    <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-  </span>
-</div>
+                    {categoryLabel}
+                  </p>
+                  <h4 className="text-sm font-semibold uppercase tracking-wide mb-1 group-hover:text-white/70 transition-colors leading-tight">
+                    {rel.name}
+                  </h4>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-semibold tracking-tight">
+                      {rel.price}
+                    </span>
+                    <span className="text-[10px] uppercase tracking-widest text-white/35 flex items-center gap-1 group-hover:text-[#a3e635]/80 transition-colors">
+                      Explore
+                      <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                    </span>
+                  </div>
                   </button>
                 </FadeIn>
               ))}
             </div>
           </div>
         )}
-
-        <Footer description="Live Beyond Limits. Premium carbon performance equipment." />
-
-      </div>
 
       <style>{`
         @keyframes fadeInImg {
