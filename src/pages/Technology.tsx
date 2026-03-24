@@ -4,6 +4,7 @@ import { useLocation } from 'wouter';
 import Navbar from '@/components/Navbar';
 import { FadeIn } from '@/components/FadeIn';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 
 export default function Technology() {
   const [, navigate] = useLocation();
@@ -16,6 +17,12 @@ export default function Technology() {
   return (
     <div className="min-h-screen bg-[#080808] text-white overflow-x-hidden">
       <Navbar forceScrolled />
+      <SEO
+        title="Carbon Matrix Technology — BLKCARBON"
+        description="Discover BLKCARBON's proprietary Carbon Matrix technology. Aerospace-grade 3K, 12K, and 18K carbon fiber engineered for maximum power, precision, and durability."
+        url="/technology"
+        image="/images/techbanner.jpg"
+      />
 
       <style>{`
         @keyframes slideUp {

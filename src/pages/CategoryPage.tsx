@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import { FadeIn } from '@/components/FadeIn';
 import { PRODUCTS, BAGS, ACCESSORIES, BIKES, APPAREL, Product } from '@/data/products';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 
 interface CategoryData {
   name: string;
@@ -88,6 +89,12 @@ export default function CategoryPage() {
   return (
     <div className="min-h-screen bg-[#080808] text-white">
       <Navbar forceScrolled />
+      <SEO
+        title={`${category.name} — BLKCARBON`}
+        description={category.description.split('\n')[0]}
+        url={`/category/${slug}`}
+        image={category.hero}
+      />
 
       {/* HERO */}
       <div className="w-full pt-[72px]">

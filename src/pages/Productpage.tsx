@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import { FadeIn } from '@/components/FadeIn';
 import Footer from '@/components/Footer';
 import { PRODUCTS, BAGS, ACCESSORIES, BIKES, APPAREL } from '@/data/products';
+import SEO from '@/components/SEO';
 
 const ALL_CATEGORIES = [
   { key: 'all',        label: 'All' },
@@ -50,6 +51,12 @@ export default function ProductsPage() {
   return (
     <div className="min-h-screen bg-[#080808] text-white overflow-x-hidden">
       <Navbar forceScrolled />
+      <SEO
+        title="All Products — BLKCARBON"
+        description="Browse all BLKCARBON products: carbon padel rackets, bikes, bags, apparel, and accessories. Engineered for elite performance."
+        url="/products"
+        image="/images/hero-racket.png"
+      />
 
       <style>{`
         @keyframes slowZoom {

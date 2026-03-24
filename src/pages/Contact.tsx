@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Reveal from "@/components/Reveal";
 import { FadeIn } from '@/components/FadeIn';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 
 const WA_NUMBER = '6285183390264';
 const IG_HANDLE = 'blkcarbon.co';
@@ -37,6 +38,12 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-[#080808] text-white overflow-x-hidden">
       <Navbar forceScrolled />
+      <SEO
+        title="Contact — BLKCARBON"
+        description="Get in touch with BLKCARBON for product consultation, orders, partnership, or after-sales support. We respond via WhatsApp within 1–2 hours."
+        url="/contact"
+        image="/images/cont.png"
+      />
 
       <style>{`
         .form-input {

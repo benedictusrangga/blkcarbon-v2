@@ -4,6 +4,7 @@ import { useLocation } from 'wouter';
 import Navbar from '@/components/Navbar';
 import { FadeIn } from '@/components/FadeIn';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 
 // FIX 2: navbar height as a constant — update in one place if navbar changes
 const NAVBAR_HEIGHT = 80;
@@ -20,6 +21,12 @@ export default function About() {
   return (
     <div className="min-h-screen bg-[#080808] text-white overflow-x-hidden">
       <Navbar forceScrolled />
+      <SEO
+        title="About Us — BLKCARBON"
+        description="BLKCARBON is a premium sports brand built in 2025, engineered without compromise. Born from obsession with carbon fiber technology and elite athletic performance."
+        url="/about"
+        image="/images/aboutt.png"
+      />
     <style>{`
         .value-card {
           position: relative;

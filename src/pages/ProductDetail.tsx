@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import { FadeIn } from '@/components/FadeIn';
 import Footer from '@/components/Footer';
 import { getProductBySlug, PRODUCTS, BAGS, ACCESSORIES, BIKES, APPAREL } from '@/data/products';
+import SEO from '@/components/SEO';
 
 const ShopeeIcon = () => (
   <img src="/images/Shopee.svg" alt="Shopee" className="w-4 h-4 object-contain flex-shrink-0" />
@@ -129,6 +130,14 @@ export default function ProductDetail() {
   return (
     <div className="min-h-screen bg-[#080808] text-white">
       <Navbar forceScrolled />
+      <SEO
+        title={`${product.name} — BLKCARBON`}
+        description={product.description}
+        url={`/products/${product.slug}`}
+        image={product.images[0]}
+        type="product"
+        product={{ name: product.name, price: product.price }}
+      />
 
       {/* STICKY BUY BAR */}
       <div className={`fixed bottom-0 left-0 right-0 z-40 transition-transform duration-300 ${stickyVisible ? 'translate-y-0' : 'translate-y-full'}`}>

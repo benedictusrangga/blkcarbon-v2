@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import { FadeIn } from '@/components/FadeIn';
 import Footer from '@/components/Footer';
 import { PRODUCTS } from '@/data/products';
+import SEO from '@/components/SEO';
 
 export default function Home() {
   const [, navigate] = useLocation();
@@ -30,6 +31,12 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#080808] text-white overflow-x-hidden">
+      <SEO
+        title="BLKCARBON — Premium Carbon Padel Rackets & Sports Equipment"
+        description="Discover BLKCARBON premium carbon padel rackets, bikes, apparel, and accessories engineered for elite performance. Shop Carbon Matrix, Carbon Spectra, Carbon Force."
+        url="/"
+        image="/images/hero-racket.png"
+      />
       <Navbar />
 
       <section className="relative min-h-[85svh] md:min-h-[85vh] lg:min-h-[90vh] w-full flex items-end justify-start overflow-hidden">
