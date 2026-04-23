@@ -10,6 +10,7 @@ import Technology from "@/pages/Technology";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import ProductsPage from "./pages/Productpage";
+import Bio from "@/pages/Bio";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -30,6 +31,7 @@ function Router() {
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
       <Route path="/products" component={ProductsPage} />
+      <Route path="/bio" component={Bio} />
       <Route component={NotFound} />
     </Switch>
   );
